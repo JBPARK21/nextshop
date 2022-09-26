@@ -1,16 +1,14 @@
-import Head from 'next/head';
 import Layout from '../components/Layout';
+import ProductItem from '../components/Productitem';
+import data from '../utils/data';
 
 export default function Home() {
   return (
     <Layout title="Home">
-      <div>
-        <div className="bg-slate-100 p-2">
-          <p className="text-3xl font-bold">NextShop</p>
-          <p>Beomju Park</p>
-          <p> - TailwindCSS </p>
-          <p> - MongoDB </p>
-        </div>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 ">
+        {data.products.map((product) => (
+          <ProductItem product={product} key={product.slug}></ProductItem>
+        ))}
       </div>
     </Layout>
   );
