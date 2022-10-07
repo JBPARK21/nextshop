@@ -24,7 +24,8 @@ export default function ProductScreen() {
       return;
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
-    //Router.push('/cart');
+
+    Router.push('/cart');
   };
 
   return (
