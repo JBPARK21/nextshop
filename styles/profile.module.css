@@ -9,17 +9,6 @@
   bottom: -20px;
 }
 
-.h2 {
-  content: '';
-  width: 350px;
-  height: 3px;
-  background: linear-gradient(to right, #00b9ff, #e7224d);
-  position: relative;
-  bottom: 50px;
-  align-items: center;
-  margin: auto;
-}
-
 .card_box {
   width: 90%;
   max-width: 800px;
