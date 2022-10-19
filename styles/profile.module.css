@@ -10,14 +10,14 @@
 }
 
 .h2 {
+  content: '';
   width: 350px;
   height: 3px;
-  align-items: center;
-  margin: auto;
-  content: '';
+  background: linear-gradient(to right, #00b9ff, #e7224d);
   position: relative;
   bottom: 50px;
-  background: linear-gradient(to left, #00b9ff, #e7224d);
+  align-items: center;
+  margin: auto;
 }
 
 .card_box {
