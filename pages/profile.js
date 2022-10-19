@@ -23,6 +23,7 @@ export default function profile() {
             <br />
             학번 : 91812323
             <br />
+            <br />
             이메일 : bzpark@naver.com
           </p>
         </div>
