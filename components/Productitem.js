@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import React from 'react';
+import Imagge from 'next/image';
+
 export default function Productitem({ product }) {
   return (
     <div className="card">
