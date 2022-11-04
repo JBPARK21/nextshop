@@ -1,6 +1,7 @@
 import React from 'react';
-import { createContext, useReducer } from 'react';
 import Cookies from 'js-cookie';
+import { createContext, useReducer } from 'react';
+
 export const Store = createContext();
 
 const initialState = {
@@ -21,6 +22,7 @@ function reducer(state, action) {
             item.name === existItem.name ? newItem : item
           )
         : [...state.cart.cartItems, newItem];
+
       Cookies.set('cart', JSON.stringify({ ...state.cart, cartItems }));
       return { ...state, cart: { ...state.cart, cartItems } };
     }
@@ -32,6 +34,15 @@ function reducer(state, action) {
       Cookies.set('cart', JSON.stringify({ ...state.cart, cartItems }));
       return { ...state, cart: { ...state.cart, cartItems } };
     }
+    case 'CART_RESET':
+      return {
+        ...state,
+        cart: {
+          cartItems: [],
+          shippingAddress: { location: {} },
+          paymentMethod: '',
+        },
+      };
     default:
       return state;
   }
