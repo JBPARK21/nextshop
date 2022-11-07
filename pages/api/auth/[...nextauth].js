@@ -3,6 +3,7 @@ import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import User from '../../../models/User';
 import db from '../../../utils/db';
+import GithubProvider from 'next-auth/providers/github';
 
 export default NextAuth({
   session: {
@@ -40,6 +41,10 @@ export default NextAuth({
         }
         throw new Error('Invalid email or password');
       },
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
 });
