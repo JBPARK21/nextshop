@@ -42,11 +42,14 @@ export default function Layout({ title, children }) {
               <a className="text-lg font-bold">NextShop</a>
             </Link>
             <div>
+              <Link href="/crypto">
+                <a className="p-4">Crypto</a>
+              </Link>
               <Link href="/profile">
-                <a className="p-2">Profile</a>
+                <a className="p-4">Profile</a>
               </Link>
               <Link href="/cart">
-                <a className="p-2">
+                <a className="p-4">
                   Cart
                   {cartItemsCount > 0 && (
                     <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
