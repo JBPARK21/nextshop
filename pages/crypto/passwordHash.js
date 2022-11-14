@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../../components/Layout';
 import Image from 'next/image';
-import bcryptPic from '../../public/bcrypt.jpg';
+import bcryptPic from '../../public/img/bcrypt.jpg';
 import bcrypt from 'bcryptjs';
 import axios from 'axios';
 

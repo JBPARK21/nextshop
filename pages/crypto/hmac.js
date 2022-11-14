@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Layout from '../../components/Layout';
 import forge from 'node-forge';
 import Image from 'next/image';
-import hmacPic from '../../public/hmac.jpg';
+import hmacPic from '../../public/img/hmac.jpg';
 import axios from 'axios';
 
 export default function HMACScreen() {

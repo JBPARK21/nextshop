@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../../components/Layout';
 import Image from 'next/image';
-import symmetricPic from '../../public/symmetric.jpg';
+import symmetricPic from '../../public/img/symmetric.jpg';
 import forge from 'node-forge';
 
 export default function AESScreen() {

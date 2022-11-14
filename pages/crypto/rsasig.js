@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Layout from '../../components/Layout';
 import Image from 'next/image';
-import rsakeyPic from '../../public/rsa-key.jpg';
-import rsaencPic from '../../public/rsa-enc.jpg';
+import rsakeyPic from '../../public/img/rsa-key.jpg';
+import rsaencPic from '../../public/img/rsa-enc.jpg';
 import forge from 'node-forge';
 
 const rsa = forge.pki.rsa;

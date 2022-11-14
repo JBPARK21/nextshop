@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Layout from '../../components/Layout';
 import forge from 'node-forge';
 import Image from 'next/image';
-import hashPic from '../../public/hash.jpg';
+import hashPic from '../../public/img/hash.jpg';
 import axios from 'axios';
 
 export default function HashScreen() {

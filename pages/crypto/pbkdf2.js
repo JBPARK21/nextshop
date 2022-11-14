@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Layout from '../../components/Layout';
 import forge from 'node-forge';
 import Image from 'next/image';
-import pbkdf2Pic from '../../public/pbkdf2.jpg';
+import pbkdf2Pic from '../../public/img/pbkdf2.jpg';
 import axios from 'axios';
 
 export default function Pbkdf2Screen() {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Layout from '../../components/Layout';
 import jwt from 'jsonwebtoken';
 import Image from 'next/image';
-import jwtPic from '../../public/jwt.jpg';
+import jwtPic from '../../public/img/jwt.jpg';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 

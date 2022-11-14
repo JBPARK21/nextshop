@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Layout from '../../components/Layout';
 import Image from 'next/image';
-import x509Pic from '../../public/x509.jpg';
-import certPic from '../../public/cert.jpg';
+import x509Pic from '../../public/img/x509.jpg';
+import certPic from '../../public/img/cert.jpg';
 import forge from 'node-forge';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
