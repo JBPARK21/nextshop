@@ -117,11 +117,11 @@ export default function HashScreen() {
             <p>Hash algorithm: {algorithm}</p>
             <p>Input text: {inputText}</p>
             <p className="overflow-x-auto text-red-700">
-              Hash value (client-side): {hashValue1} ({hashValue1.length * 4}
+              Hash value (client-side): {hashValue1} ({hashValue1.length * 4}{' '}
               bits)
             </p>
             <p className="overflow-x-auto  text-blue-700">
-              Hash value (server-side): {hashValue2} ({hashValue2.length * 4}
+              Hash value (server-side): {hashValue2} ({hashValue2.length * 4}{' '}
               bits)
             </p>
           </div>

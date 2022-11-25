@@ -1,17 +1,21 @@
+import { React } from 'react';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
+
 export default function Crypto() {
   return (
     <Layout title="crypto">
       <h1 className="mb-4 text-2xl text-center">
         Crypto Test (암호 알고리즘 테스트)
       </h1>
+
       <div className="mx-auto max-w-screen-sm">
         <div className="button-link">
           <Link href="crypto/hash">
             <a className=" text-xl">Hash function - 해시함수 </a>
           </Link>
         </div>
+
         <div className="button-link">
           <Link href="crypto/hmac">
             <a className=" text-xl">
@@ -19,6 +23,7 @@ export default function Crypto() {
             </a>
           </Link>
         </div>
+
         <div className="button-link">
           <Link href="crypto/pbkdf2">
             <a className=" text-xl">
@@ -32,7 +37,6 @@ export default function Crypto() {
             <a className=" text-xl">Password Hash Salting - 패스워드 해시 </a>
           </Link>
         </div>
-
         <div className="button-link">
           <Link href="crypto/aes">
             <a className=" text-xl">AES encryption - 대칭키 암호 </a>

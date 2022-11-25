@@ -4,8 +4,7 @@ import { React, useContext, useEffect, useState } from 'react';
 import { Store } from '../utils/Store';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSession } from 'next-auth/react';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { Menu } from '@headlessui/react';
 import DropdownLink from './DropdownLink';
 import Cookies from 'js-cookie';
@@ -18,7 +17,6 @@ export default function Layout({ title, children }) {
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);
-
   const logoutClickHandler = () => {
     Cookies.remove('cart');
     dispatch({ type: 'CART_RESET' });
@@ -42,14 +40,14 @@ export default function Layout({ title, children }) {
               <a className="text-lg font-bold">NextShop</a>
             </Link>
             <div>
-              <Link href="/crypto">
-                <a className="p-4">Crypto</a>
+              <Link href="/MyProfile">
+                <a className="p-2">MyProfile</a>
               </Link>
-              <Link href="/profile">
-                <a className="p-4">Profile</a>
+              <Link href="/crypto">
+                <a className="p-2">Crypto</a>
               </Link>
               <Link href="/cart">
-                <a className="p-4">
+                <a className="p-2">
                   Cart
                   {cartItemsCount > 0 && (
                     <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
@@ -65,7 +63,7 @@ export default function Layout({ title, children }) {
                   <Menu.Button className="text-blue-600">
                     {session.user.name}
                   </Menu.Button>
-                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
+                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white shadow-lg ">
                     <Menu.Item>
                       <DropdownLink className="dropdown-link" href="/profile">
                         Profile
