@@ -1,13 +1,13 @@
-import React from "react";
-import Link from "next/link";
-import { signIn, useSession } from "next-auth/react";
-import Layout from "../components/Layout";
-import { useForm } from "react-hook-form";
-import { getError } from "../utils/error";
-import { toast } from "react-toastify";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import axios from "axios";
+import React from 'react';
+import Link from 'next/link';
+import { signIn, useSession } from 'next-auth/react';
+import Layout from '../components/Layout';
+import { useForm } from 'react-hook-form';
+import { getError } from '../utils/error';
+import { toast } from 'react-toastify';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
 
 export default function LoginScreen() {
   const { data: session } = useSession();
@@ -15,7 +15,7 @@ export default function LoginScreen() {
   const { redirect } = router.query;
   useEffect(() => {
     if (session?.user) {
-      router.push(redirect || "/");
+      router.push(redirect || '/');
     }
   }, [router, session, redirect]);
 
@@ -27,13 +27,13 @@ export default function LoginScreen() {
 
   const submitHandler = async ({ email, password }) => {
     try {
-      const result = await signIn("credentials", {
+      const result = await signIn('credentials', {
         redirect: false,
         email,
         password,
       });
       await axios
-        .post("/api/auth/loginLog", { provider: "credentials" })
+        .post('/api/auth/loginLog', { provider: 'credentials' })
         .then((res) => {
           console.log(res.data.message);
         });
@@ -47,10 +47,10 @@ export default function LoginScreen() {
 
   const githubLoginHandler = async () => {
     try {
-      const result = await signIn("github", {
+      const result = await signIn('github', {
         redirect: false,
       });
-      console.log("Github login: " + result);
+      console.log('Github login: ' + result);
     } catch (err) {
       toast.error(getError(err));
     }
@@ -59,7 +59,7 @@ export default function LoginScreen() {
   const googleLoginHandler = async () => {
     try {
       // eslint-disable-next-line no-unused-vars
-      const result = await signIn("google", {
+      const result = await signIn('google', {
         redirect: false,
       });
     } catch (err) {
@@ -70,7 +70,7 @@ export default function LoginScreen() {
   const kakaoLoginHandler = async () => {
     try {
       // eslint-disable-next-line no-unused-vars
-      const result = await signIn("kakao", {
+      const result = await signIn('kakao', {
         redirect: false,
       });
     } catch (err) {
@@ -81,7 +81,7 @@ export default function LoginScreen() {
   const naverLoginHandler = async () => {
     try {
       // eslint-disable-next-line no-unused-vars
-      const result = await signIn("naver", {
+      const result = await signIn('naver', {
         redirect: false,
       });
     } catch (err) {
@@ -100,11 +100,11 @@ export default function LoginScreen() {
           <label htmlFor="email">Email</label>
           <input
             type="email"
-            {...register("email", {
-              required: "Please enter email",
+            {...register('email', {
+              required: 'Please enter email',
               pattern: {
                 value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/i,
-                message: "Please enter valid email",
+                message: 'Please enter valid email',
               },
             })}
             className="w-full"
@@ -120,9 +120,9 @@ export default function LoginScreen() {
           <label htmlFor="password">Password</label>
           <input
             type="password"
-            {...register("password", {
-              required: "Please enter password",
-              minLength: { value: 3, message: "password is more than 3 chars" },
+            {...register('password', {
+              required: 'Please enter password',
+              minLength: { value: 3, message: 'password is more than 3 chars' },
             })}
             className="w-full"
             id="password"
@@ -139,7 +139,7 @@ export default function LoginScreen() {
 
         <div className="mb-4">
           Don&apos;t have an account? &nbsp;
-          <Link href={`/register?redirect=${redirect || "/"}`}>Register</Link>
+          <Link href={`/register?redirect=${redirect || '/'}`}>Register</Link>
         </div>
         <div className="p-5 bg-gray-500 rounded-lg">
           <div className="mb-4">

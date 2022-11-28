@@ -1,4 +1,4 @@
-import forge from "node-forge";
+import forge from 'node-forge';
 
 export default function handler(req, res) {
   const password = req.body.password;

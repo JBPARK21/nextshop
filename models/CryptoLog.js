@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const cryptoLogSchema = new mongoose.Schema(
   {
@@ -12,5 +12,5 @@ const cryptoLogSchema = new mongoose.Schema(
 );
 
 const CryptoLog =
-  mongoose.models.CryptoLog || mongoose.model("CryptoLog", cryptoLogSchema);
+  mongoose.models.CryptoLog || mongoose.model('CryptoLog', cryptoLogSchema);
 export default CryptoLog;

@@ -1,7 +1,7 @@
-import { getSession } from "next-auth/react";
-import CryptoLog from "../../../models/CryptoLog";
-import { computeHmac } from "../../../utils/crypto-function";
-import db from "../../../utils/db";
+import { getSession } from 'next-auth/react';
+import CryptoLog from '../../../models/CryptoLog';
+import { computeHmac } from '../../../utils/crypto-function';
+import db from '../../../utils/db';
 
 export default async function handler(req, res) {
   const { algorithm, inputText, secret } = req.body;
@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
   const session = await getSession({ req });
   if (!session) {
-    return res.status(401).send({ message: "signin required" });
+    return res.status(401).send({ message: 'signin required' });
   }
   const { user } = session;
   const email = user.email;
@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
   const newCryptoLog = new CryptoLog({
     email,
-    service: "HMAC",
+    service: 'HMAC',
     request: requestString,
   });
 

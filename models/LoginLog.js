@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const loginLogSchema = new mongoose.Schema(
   {
@@ -11,5 +11,5 @@ const loginLogSchema = new mongoose.Schema(
 );
 
 const LoginLog =
-  mongoose.models.LoginLog || mongoose.model("LoginLog", loginLogSchema);
+  mongoose.models.LoginLog || mongoose.model('LoginLog', loginLogSchema);
 export default LoginLog;
