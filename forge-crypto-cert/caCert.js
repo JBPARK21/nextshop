@@ -24,7 +24,7 @@ cert.validity.notAfter.setFullYear(cert.validity.notBefore.getFullYear() + 1); /
 var attrs = [
   {
     shortName: 'CN',
-    value: 'Byoungcheon Lee',
+    value: 'BeomJu Park',
   },
   {
     shortName: 'C',
