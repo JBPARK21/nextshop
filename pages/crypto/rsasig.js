@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import Layout from '../../components/Layout';
-import Image from 'next/image';
-import rsakeyPic from '../../public/img/rsa-key.jpg';
-import rsaencPic from '../../public/img/rsa-enc.jpg';
-import forge from 'node-forge';
+import React, { useState } from "react";
+import Layout from "../../components/Layout";
+import Image from "next/image";
+import rsakeyPic from "../../public/rsa-key.jpg";
+import rsaencPic from "../../public/rsa-enc.jpg";
+import forge from "node-forge";
 
 const rsa = forge.pki.rsa;
 const pki = forge.pki;
@@ -12,15 +12,15 @@ export default function RSASigScreen() {
   const lengths = [1024, 2048, 3072];
 
   const [keyLength, setKeyLength] = useState(1024);
-  const [publicKey, setPublicKey] = useState('');
-  const [publicKeyPem, setPublicKeyPem] = useState('');
-  const [privateKey, setPrivateKey] = useState('');
-  const [privateKeyPem, setPrivateKeyPem] = useState('');
+  const [publicKey, setPublicKey] = useState("");
+  const [publicKeyPem, setPublicKeyPem] = useState("");
+  const [privateKey, setPrivateKey] = useState("");
+  const [privateKeyPem, setPrivateKeyPem] = useState("");
 
-  const [plaintext, setPlaintext] = useState('Hello world - 헬로월드');
-  const [signature, setSignature] = useState('');
-  const [signatureHex, setSignatureHex] = useState('');
-  const [result, setResult] = useState('');
+  const [plaintext, setPlaintext] = useState("Hello world - 헬로월드");
+  const [signature, setSignature] = useState("");
+  const [signatureHex, setSignatureHex] = useState("");
+  const [result, setResult] = useState("");
 
   const keyGen = () => {
     const keypair = rsa.generateKeyPair({ bits: keyLength, e: 0x10001 });
@@ -37,7 +37,7 @@ export default function RSASigScreen() {
       saltLength: 20,
     });
     let md = forge.md.sha256.create();
-    md.update(plaintext, 'utf8');
+    md.update(plaintext, "utf8");
     let sig = privateKey.sign(md, pss);
     setSignature(sig);
     setSignatureHex(forge.util.bytesToHex(sig));
@@ -50,9 +50,9 @@ export default function RSASigScreen() {
       saltLength: 20,
     });
     let md = forge.md.sha256.create();
-    md.update(plaintext, 'utf8');
+    md.update(plaintext, "utf8");
     let verified = publicKey.verify(md.digest().bytes(), signature, pss);
-    setResult(verified ? '서명 검증 OK' : '서명 Error');
+    setResult(verified ? "서명 검증 OK" : "서명 Error");
   };
 
   return (

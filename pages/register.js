@@ -1,12 +1,12 @@
-import Link from 'next/link';
-import React, { useEffect } from 'react';
-import { signIn, useSession } from 'next-auth/react';
-import { useForm } from 'react-hook-form';
-import Layout from '../components/Layout';
-import { getError } from '../utils/error';
-import { toast } from 'react-toastify';
-import { useRouter } from 'next/router';
-import axios from 'axios';
+import Link from "next/link";
+import React, { useEffect } from "react";
+import { signIn, useSession } from "next-auth/react";
+import { useForm } from "react-hook-form";
+import Layout from "../components/Layout";
+import { getError } from "../utils/error";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function RegisterScreen() {
   const { data: session } = useSession();
@@ -16,7 +16,7 @@ export default function RegisterScreen() {
 
   useEffect(() => {
     if (session?.user) {
-      router.push(redirect || '/');
+      router.push(redirect || "/");
     }
   }, [router, session, redirect]);
 
@@ -29,13 +29,13 @@ export default function RegisterScreen() {
 
   const submitHandler = async ({ name, email, password }) => {
     try {
-      await axios.post('/api/auth/signup', {
+      await axios.post("/api/auth/signup", {
         name,
         email,
         password,
       });
 
-      const result = await signIn('credentials', {
+      const result = await signIn("credentials", {
         redirect: false,
         email,
         password,
@@ -61,8 +61,8 @@ export default function RegisterScreen() {
             className="w-full"
             id="name"
             autoFocus
-            {...register('name', {
-              required: 'Please enter name',
+            {...register("name", {
+              required: "Please enter name",
             })}
           />
           {errors.name && (
@@ -74,11 +74,11 @@ export default function RegisterScreen() {
           <label htmlFor="email">Email</label>
           <input
             type="email"
-            {...register('email', {
-              required: 'Please enter email',
+            {...register("email", {
+              required: "Please enter email",
               pattern: {
                 value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/i,
-                message: 'Please enter valid email',
+                message: "Please enter valid email",
               },
             })}
             className="w-full"
@@ -92,9 +92,9 @@ export default function RegisterScreen() {
           <label htmlFor="password">Password</label>
           <input
             type="password"
-            {...register('password', {
-              required: 'Please enter password',
-              minLength: { value: 6, message: 'password is more than 5 chars' },
+            {...register("password", {
+              required: "Please enter password",
+              minLength: { value: 6, message: "password is more than 5 chars" },
             })}
             className="w-full"
             id="password"
@@ -110,12 +110,12 @@ export default function RegisterScreen() {
             className="w-full"
             type="password"
             id="confirmPassword"
-            {...register('confirmPassword', {
-              required: 'Please enter confirm password',
-              validate: (value) => value === getValues('password'),
+            {...register("confirmPassword", {
+              required: "Please enter confirm password",
+              validate: (value) => value === getValues("password"),
               minLength: {
                 value: 3,
-                message: 'confirm password is more than 2 chars',
+                message: "confirm password is more than 2 chars",
               },
             })}
           />
@@ -125,7 +125,7 @@ export default function RegisterScreen() {
             </div>
           )}
           {errors.confirmPassword &&
-            errors.confirmPassword.type === 'validate' && (
+            errors.confirmPassword.type === "validate" && (
               <div className="text-red-500 ">Password do not match</div>
             )}
         </div>
@@ -135,7 +135,7 @@ export default function RegisterScreen() {
         </div>
         <div className="mb-4 ">
           Don&apos;t have an account? &nbsp;
-          <Link href={`/register?redirect=${redirect || '/'}`}>Register</Link>
+          <Link href={`/register?redirect=${redirect || "/"}`}>Register</Link>
         </div>
       </form>
     </Layout>

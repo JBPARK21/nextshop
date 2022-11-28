@@ -1,16 +1,16 @@
-import bcryptjs from 'bcryptjs';
-import NextAuth from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import User from '../../../models/User';
-import db from '../../../utils/db';
-import GithubProvider from 'next-auth/providers/github';
-import GoogleProvider from 'next-auth/providers/google';
-import KakaoProvider from 'next-auth/providers/kakao';
-import NaverProvider from 'next-auth/providers/naver';
+import bcryptjs from "bcryptjs";
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import User from "../../../models/User";
+import db from "../../../utils/db";
+import GithubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
+import KakaoProvider from "next-auth/providers/kakao";
+import NaverProvider from "next-auth/providers/naver";
 
 export default NextAuth({
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -37,11 +37,11 @@ export default NextAuth({
             _id: user._id,
             name: user.name,
             email: user.email,
-            image: 'f',
+            image: "f",
             isAdmin: user.isAdmin,
           };
         }
-        throw new Error('Invalid email or password');
+        throw new Error("Invalid email or password");
       },
     }),
     GithubProvider({

@@ -1,25 +1,25 @@
-import forge from 'node-forge';
+import forge from "node-forge";
 
 const computeHash = (algorithm, inputText) => {
   let md;
   switch (algorithm) {
-    case 'md5':
+    case "md5":
       md = forge.md.md5.create();
       md.update(inputText);
       return md.digest().toHex();
-    case 'sha1':
+    case "sha1":
       md = forge.md.sha1.create();
       md.update(inputText);
       return md.digest().toHex();
-    case 'sha256':
+    case "sha256":
       md = forge.md.sha256.create();
       md.update(inputText);
       return md.digest().toHex();
-    case 'sha384':
+    case "sha384":
       md = forge.md.sha384.create();
       md.update(inputText);
       return md.digest().toHex();
-    case 'sha512':
+    case "sha512":
       md = forge.md.sha512.create();
       md.update(inputText);
       return md.digest().toHex();

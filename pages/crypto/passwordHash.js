@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import Layout from '../../components/Layout';
-import Image from 'next/image';
-import bcryptPic from '../../public/img/bcrypt.jpg';
-import bcrypt from 'bcryptjs';
-import axios from 'axios';
+import React, { useState } from "react";
+import Layout from "../../components/Layout";
+import Image from "next/image";
+import bcryptPic from "../../public/bcrypt.jpg";
+import bcrypt from "bcryptjs";
+import axios from "axios";
 
 export default function PasswordHashScreen() {
-  const [password, setPassword] = useState('supersecretpassword');
-  const [hpassword, setHpassword] = useState('');
-  const [password1, setPassword1] = useState('supersecretpassword');
+  const [password, setPassword] = useState("supersecretpassword");
+  const [hpassword, setHpassword] = useState("");
+  const [password1, setPassword1] = useState("supersecretpassword");
   const [result, setResult] = useState(false);
   const [result1, setResult1] = useState(false);
 
@@ -19,7 +19,7 @@ export default function PasswordHashScreen() {
 
   const loginHandler = async () => {
     await axios
-      .post('/api/crypto/passwordHash', { password, password1 })
+      .post("/api/crypto/passwordHash", { password, password1 })
       .then((res) => {
         setResult1(res.data.result);
       });
@@ -112,12 +112,12 @@ export default function PasswordHashScreen() {
             <p>Registered password: {password}</p>
             <p>Login password: {password1}</p>
             <p className="text-red-700 font-bold">
-              Login result (client-side):{' '}
-              {result ? '로그인 성공' : '로그인 실패'}
+              Login result (client-side):{" "}
+              {result ? "로그인 성공" : "로그인 실패"}
             </p>
             <p className="text-red-700 font-bold">
-              Login result (server-side):{' '}
-              {result1 ? '로그인 성공' : '로그인 실패'}
+              Login result (server-side):{" "}
+              {result1 ? "로그인 성공" : "로그인 실패"}
             </p>
           </div>
         </div>
