@@ -1,6 +1,7 @@
-var forge = require('node-forge');
-var fs = require('fs');
+var forge = require("node-forge");
+var fs = require("fs");
 var pki = forge.pki;
+// eslint-disable-next-line no-unused-vars
 var rsa = forge.pki.rsa;
 
 // 루트인증기관에서 자체서명인증서 생성, 저장
@@ -17,34 +18,34 @@ var cert = pki.createCertificate();
 
 // 3. 각종 필드 정보 입력
 cert.publicKey = publicKey;
-cert.serialNumber = '01'; // DB 등에 일련번호 관리 필요
+cert.serialNumber = "01"; // DB 등에 일련번호 관리 필요
 cert.validity.notBefore = new Date(); // 발급시간, 현재시간
 cert.validity.notAfter.setFullYear(cert.validity.notBefore.getFullYear() + 1); // 유효기간을 1년으로 설정
 // 사용자 정보
 var attrs = [
   {
-    shortName: 'CN',
-    value: 'BeomJu Park',
+    shortName: "CN",
+    value: "JinUk Lee",
   },
   {
-    shortName: 'C',
-    value: 'KR',
+    shortName: "C",
+    value: "KR",
   },
   {
-    shortName: 'ST',
-    value: 'Gyeonggi-do',
+    shortName: "ST",
+    value: "Gyeonggi-do",
   },
   {
-    shortName: 'L',
-    value: 'Goyang-si',
+    shortName: "L",
+    value: "Goyang-si",
   },
   {
-    shortName: 'O',
-    value: 'Joongbu Univ.',
+    shortName: "O",
+    value: "Joongbu Univ.",
   },
   {
-    shortName: 'OU',
-    value: 'Dept. of Information Security',
+    shortName: "OU",
+    value: "Dept. of Information Security",
   },
 ];
 
@@ -53,11 +54,11 @@ cert.setIssuer(attrs); // 발급자로 설정 (자체서명인증서인 경우 �
 // 확장영역 설정
 cert.setExtensions([
   {
-    name: 'basicConstraints',
+    name: "basicConstraints",
     cA: true, // 인증기관의 인증서임을 나타냄
   },
   {
-    name: 'keyUsage', // 키용도 설정
+    name: "keyUsage", // 키용도 설정
     keyCertSign: true,
     digitalSignature: true,
     nonRepudiation: true,
@@ -65,7 +66,7 @@ cert.setExtensions([
     dataEncipherment: true,
   },
   {
-    name: 'extKeyUsage', // 확장 키용도 설정
+    name: "extKeyUsage", // 확장 키용도 설정
     serverAuth: true,
     clientAuth: true,
     codeSigning: true,
@@ -73,7 +74,7 @@ cert.setExtensions([
     timeStamping: true,
   },
   {
-    name: 'nsCertType', // 인증서 타입
+    name: "nsCertType", // 인증서 타입
     client: true,
     server: true,
     email: true,
@@ -83,21 +84,21 @@ cert.setExtensions([
     objCA: true,
   },
   {
-    name: 'subjectAltName', // 주체 별도 정보
+    name: "subjectAltName", // 주체 별도 정보
     altNames: [
       {
         type: 6, // URI
-        value: 'http://cris.joongbu.ac.kr',
+        value: "http://cris.joongbu.ac.kr",
       },
       {
         type: 7, // IP
-        ip: '127.0.0.1',
+        ip: "127.0.0.1",
       },
     ],
   },
   {
     // 주체 키 식별자
-    name: 'subjectKeyIdentifier',
+    name: "subjectKeyIdentifier",
   },
 ]);
 
@@ -108,17 +109,17 @@ cert.sign(privateKey);
 var pem = pki.certificateToPem(cert);
 console.log(pem); // 6. 인증서의 검증
 var verified = cert.verify(cert); // 인증서에 있는 공개키로 검증
-console.log('인증서 검증: ' + verified);
+console.log("인증서 검증: " + verified);
 
 // 7. 인증서, 개인키를 파일로 저장하기
-fs.writeFile('caPublicKey.pem', pki.publicKeyToPem(publicKey), function (err) {
+fs.writeFile("caPublicKey.pem", pki.publicKeyToPem(publicKey), function (err) {
   if (err) {
     return console.log(err);
   }
 });
 
 fs.writeFile(
-  'caPrivateKey.pem',
+  "caPrivateKey.pem",
   pki.privateKeyToPem(privateKey),
   function (err) {
     if (err) {
@@ -127,7 +128,7 @@ fs.writeFile(
   }
 );
 
-fs.writeFile('caCert.pem', pki.certificateToPem(cert), function (err) {
+fs.writeFile("caCert.pem", pki.certificateToPem(cert), function (err) {
   if (err) {
     return console.log(err);
   }
